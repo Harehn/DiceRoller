@@ -10,10 +10,9 @@ CORS(app)
 @app.route("/")
 def homepage():
     import os
-    return os.getcwd()
-    # return "<h1>This is the homepage</h1>"
-    # path = 'C:/Users/Vivek/PycharmProjects/DiceRoller/Backend/homepage.html'
-    #return helper.get_file('Backend/homepage.html')
+    # return os.getcwd()
+    path = os.getcwd() + '/homepage.html'
+    return helper.get_file(path)
 
 
 @app.route("/roll", methods=['GET'])

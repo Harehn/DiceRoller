@@ -53,11 +53,13 @@ export default {
        console.log("App was opened in DEVELOPMENT");
     }else{
        console.log("App was opened in PRODUCTION");
-       var api_path = 'https://diceroller-uwe7.onrender.com/'
+       var api_path = 'https://diceroller-uwe7.onrender.com/wake';
+       console.log("Calling Backend...")
         fetch(api_path)
         .then(res => res.json())
+        .then(data => data['message'])
         .then(data => console.log(data))
-        .catch(err => console.log(err))
+        .catch(err => console.log(err));
     }
     //console.log(process.env.NODE_ENV == 'development'); // OUTPUT: development
   }

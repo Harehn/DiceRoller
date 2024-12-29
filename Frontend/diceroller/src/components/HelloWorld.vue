@@ -33,6 +33,7 @@ export default {
       this.rolled = true;
       var diceType = document.getElementById("dice_input").value;
       //https://diceroller-uwe7.onrender.com/roll?roll=33
+      console.log('https://diceroller-uwe7.onrender.com/roll?roll=${diceType}')
       var currResult = await fetch(`https://diceroller-uwe7.onrender.com/roll?roll=${diceType}`)
       .then(res => res.json())
       .then(response => response['result'])

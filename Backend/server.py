@@ -28,4 +28,7 @@ def roll_dice(dice):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # CHANGED to PRODCUCTION MODE
+    # app.run(debug=True)
+    app.run()
+

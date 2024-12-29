@@ -25,7 +25,8 @@ export default {
    return {
     members: [],
     results: [],
-    rolled: false
+    rolled: false,
+    in_dev:false
    }
   },
   methods: {
@@ -34,8 +35,11 @@ export default {
       var dice = document.getElementById("dice_input").value;
       dice = dice.replace("+","%2b")
       //https://diceroller-uwe7.onrender.com/roll?roll=33
-      console.log('https://diceroller-uwe7.onrender.com/roll?roll='.concat(dice))
-      var currResult = await fetch(`https://diceroller-uwe7.onrender.com/roll?roll=${dice}`)
+      var api_path = 'https://diceroller-uwe7.onrender.com/roll?roll='
+      if (this.in_dev){api_path =  'http://localhost:5000/roll?roll='}
+      api_path = api_path.concat(dice)
+      console.log(api_path)
+      var currResult = await fetch(api_path)
       .then(res => res.json())
       .then(response => response['result'])
       .catch(err => console.log(err));
@@ -44,7 +48,20 @@ export default {
   },
   mounted() {
     //https://stackoverflow.com/a/58475472/28974846
-    console.log(process.env.NODE_ENV); // OUTPUT: development
+    if (process.env.NODE_ENV == 'development'){
+       this.in_dev = true;
+       console.log("App was opened in DEVELOPMENT");
+    }else{
+       console.log("App was opened in PRODUCTION");
+       var api_path = 'https://diceroller-uwe7.onrender.com/'
+       var currResult = await fetch(api_path)
+      .then(res => res.json())
+      //.then(response => response['result'])
+      .then(response => console.log(response))
+      .catch(err => console.log(err));
+
+    }
+    //console.log(process.env.NODE_ENV == 'development'); // OUTPUT: development
   }
 }
 </script>

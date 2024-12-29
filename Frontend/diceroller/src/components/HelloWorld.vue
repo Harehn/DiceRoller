@@ -54,12 +54,10 @@ export default {
     }else{
        console.log("App was opened in PRODUCTION");
        var api_path = 'https://diceroller-uwe7.onrender.com/'
-       var currResult = await fetch(api_path)
-      .then(res => res.json())
-      //.then(response => response['result'])
-      .then(response => console.log(response))
-      .catch(err => console.log(err));
-
+        fetch(api_path)
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .catch(err => console.log(err))
     }
     //console.log(process.env.NODE_ENV == 'development'); // OUTPUT: development
   }

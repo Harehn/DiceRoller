@@ -1,6 +1,7 @@
 from flask import Flask, request
 from flask_cors import CORS
 from random import random, randint
+import helper
 
 app = Flask(__name__)
 CORS(app)
@@ -8,7 +9,9 @@ CORS(app)
 
 @app.route("/")
 def homepage():
-    return "<h1>This is the homepage</h1>"
+    # return "<h1>This is the homepage</h1>"
+    # path = 'C:/Users/Vivek/PycharmProjects/DiceRoller/Backend/homepage.html'
+    return helper.get_file('Backend/homepage.html')
 
 
 @app.route("/roll", methods=['GET'])

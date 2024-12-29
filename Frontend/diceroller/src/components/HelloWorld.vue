@@ -43,6 +43,8 @@ export default {
     }
   },
   mounted() {
+    //https://stackoverflow.com/a/58475472/28974846
+    console.log(process.env.NODE_ENV); // OUTPUT: development
   }
 }
 </script>

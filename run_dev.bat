@@ -1,5 +1,6 @@
 :: Thanks to this link
 :: https://stackoverflow.com/a/28421514/28974846
+:: https://stackoverflow.com/a/51870885/28974846
 start cmd.exe /k .\.venv\Scripts\python.exe .\Backend\server.py
 cd Frontend/diceroller
 start cmd.exe /c npm run serve

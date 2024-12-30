@@ -5,7 +5,10 @@
   <div>
   <label for='dice_input'>Dice: </label>
   <input type='text' id='dice_input' name='dice_input'  @keyup.enter="writeText">
+  <p id=space>X</p>
   <input type='button' value='Roll' @click='writeText'>
+  <p id=space>X</p>
+  <help help_msg="Input must be in format XdX+X. eg 3d10+3, 1d100, 2d6-1."/>
   </div>
 
   <div>
@@ -15,8 +18,7 @@
   <div v-if='rolled'>
   <p v-for="result in results"><b>{{result[0]}}:</b> {{result[1]}}</p>
   </div>
-
-  <help/>
+  
   </div>
 </template>
 
@@ -104,4 +106,10 @@ li {
 a {
   color: #42b983;
 }
+#space {
+  display: inline-block;
+  visibility: hidden;
+  font-size: 6px;
+}
+
 </style>

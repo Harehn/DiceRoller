@@ -1,7 +1,6 @@
 <template>
-    <p></p>
-    <div class="popup" @click="sample()">Click me!
-    <span class="popuptext" id="myPopup">Popup text...</span>
+    <div class="popup" @click="sample()"><p class="question"></p>
+    <span class="popuptext" id="myPopup">{{ help_msg }}</span>
     </div> 
 </template>
   
@@ -9,7 +8,7 @@
   export default {
     name: 'Help',
     props: {
-      
+      help_msg: String
     },
     data (){
      return {
@@ -81,6 +80,25 @@
 @keyframes fadeIn {
   from {opacity: 0;}
   to {opacity:1 ;}
-} 
+}
+
+.question::before{
+    content:'?';
+    font-weight: bold;
+    color:#fff;
+}
+
+.question{
+    display: inline-block;
+    text-align: center;
+    background-color: grey;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+    line-height: 26px;
+    cursor: default;
+}
+
 </style>
   

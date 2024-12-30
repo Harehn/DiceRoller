@@ -8,6 +8,10 @@
   <input type='button' value='Roll' @click='writeText'>
   </div>
 
+  <div>
+    <input type='button' value='Clear History' @click='clear'>
+  </div>
+
   <div v-if='rolled'>
   <p v-for="result in results">{{result}}</p>
   </div>
@@ -44,6 +48,9 @@ export default {
       .then(response => response['result'])
       .catch(err => console.log(err));
       this.results.unshift(currResult)
+    },
+    clear(){
+      this.results = []
     }
   },
   mounted() {

@@ -12,6 +12,8 @@ CORS(app)
 def homepage():
     import os
     path = os.getcwd() + '/homepage.html'
+    if app.debug:
+        path = os.getcwd() + '/Backend/homepage.html'
     return helper.get_file(path)
 
 
@@ -33,7 +35,11 @@ def wake():
     return {'message': 'Backend is now awake.'}
 
 
+@app.route("/dev")
+def in_dev():
+    import os
+    return "App in development mode" if app.debug else "App in Production mode"
+
 if __name__ == "__main__":
-    # CHANGED to PRODCUCTION MODE
-    app.run(debug=True)
-    # app.run(host='0.0.0.0', port=3000)
+    # app.run(debug=True) # DEVELOPMENT MODE
+    app.run(host='0.0.0.0', port=3000) # PRODUCTION MODE

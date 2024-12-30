@@ -4,7 +4,7 @@
 
   <div>
   <label for='dice_input'>Dice: </label>
-  <input type='text' id='dice_input' name='dice_input'>
+  <input type='text' id='dice_input' name='dice_input'  @keyup.enter="writeText">
   <input type='button' value='Roll' @click='writeText'>
   </div>
 
@@ -16,12 +16,19 @@
   <p v-for="result in results"><b>{{result[0]}}:</b> {{result[1]}}</p>
   </div>
 
+  <help/>
   </div>
 </template>
 
 <script>
+
+import Help from './Help.vue'
+
 export default {
   name: 'HelloWorld',
+  components: {
+    Help
+  },
   props: {
     msg: String
   },
@@ -37,6 +44,14 @@ export default {
     async writeText() {
       this.rolled = true;
       var dice_val = document.getElementById("dice_input").value;
+      dice_val = dice_val.replaceAll(" ", "")
+      var found = dice_val.match(/^[0-9d+-]*/)
+      found = found[0]
+      if(found.length != dice_val.length){
+        console.log("Error in string formatting")
+        this.results.unshift([dice_val, "Incorrect dice string"])
+        return
+      }
       var dice = dice_val.replace("+","%2b")
       //https://diceroller-uwe7.onrender.com/roll?roll=33
       var api_path = 'https://diceroller-uwe7.onrender.com/roll?roll='

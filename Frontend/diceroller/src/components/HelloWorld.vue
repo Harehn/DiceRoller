@@ -13,7 +13,7 @@
   </div>
 
   <div v-if='rolled'>
-  <p v-for="result in results">{{result}}</p>
+  <p v-for="result in results"><b>{{result[0]}}:</b> {{result[1]}}</p>
   </div>
 
   </div>
@@ -36,8 +36,8 @@ export default {
   methods: {
     async writeText() {
       this.rolled = true;
-      var dice = document.getElementById("dice_input").value;
-      dice = dice.replace("+","%2b")
+      var dice_val = document.getElementById("dice_input").value;
+      var dice = dice_val.replace("+","%2b")
       //https://diceroller-uwe7.onrender.com/roll?roll=33
       var api_path = 'https://diceroller-uwe7.onrender.com/roll?roll='
       if (this.in_dev){api_path =  'http://localhost:5000/roll?roll='}
@@ -47,7 +47,7 @@ export default {
       .then(res => res.json())
       .then(response => response['result'])
       .catch(err => console.log(err));
-      this.results.unshift(currResult)
+      this.results.unshift([dice_val, currResult])
     },
     clear(){
       this.results = []

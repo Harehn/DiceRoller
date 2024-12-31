@@ -1,23 +1,37 @@
 <template>
+  <!-- https://www.w3schools.com/css/css_navbar_horizontal.asp -->
   <div class="nav">
   <ul>
-    <li><a>Home</a></li>
-    <li><a>News</a></li>
-    <li><a>Contact</a></li>
-    <li><a>About</a></li>
+    <li><a @click="changePage(1)">Home</a></li>
+    <li><a @click="changePage(2)">Presets</a></li>
+    <li><a @click="changePage(3)">About</a></li>
   </ul>
   </div>
   
-  <HelloWorld msg="Welcome to DiceRoller"/>
+  <HelloWorld v-if="page==1" msg="Welcome to DiceRoller"/>
+  <Preset v-if="page==2"/>
+  <About v-if="page==3"/>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import About from './components/About.vue'
+import Preset from './components/Preset.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld, About, Preset
+  },data (){
+   return {
+    page : 1,
+   }
+  },
+  methods: {
+    changePage(page_num){
+      this.page = page_num
+      console.log(this.page)
+    }
   }
 }
 </script>
@@ -29,7 +43,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 0px;
 }
 
 

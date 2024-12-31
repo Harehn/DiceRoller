@@ -119,6 +119,9 @@ a {
   max-width: 400px;
   margin-right: auto;
   margin-left: auto;
+  overflow-y: scroll;
+  max-height: 500px;
+  min-height: auto;
 }
 
 .iroll {

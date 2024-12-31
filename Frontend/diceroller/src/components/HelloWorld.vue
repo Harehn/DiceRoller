@@ -15,10 +15,10 @@
     <input type='button' value='Clear History' @click='clear'>
   </div>
 
-  <div v-if='rolled'>
-  <p v-for="result in results"><b>{{result[0]}}:</b> {{result[1]}}</p>
+  <div id="roll" v-if='results.length != 0'>
+  <p class="iroll" v-for="result in results"><b>{{result[0]}}:</b> {{result[1]}}</p>
   </div>
-  
+
   </div>
 </template>
 
@@ -38,13 +38,11 @@ export default {
    return {
     members: [],
     results: [],
-    rolled: false,
     in_dev:false
    }
   },
   methods: {
     async writeText() {
-      this.rolled = true;
       var dice_val = document.getElementById("dice_input").value;
       dice_val = dice_val.replaceAll(" ", "")
       var found = dice_val.match(/^[0-9d+-]*/)
@@ -111,5 +109,31 @@ a {
   visibility: hidden;
   font-size: 6px;
 }
+
+#roll {
+  border-color: black;
+  border-radius: 10px;
+  border-width: 1px;
+  border-style: solid;
+  background-color: lightcyan;
+  max-width: 400px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.iroll {
+  border-color: black;
+  border-radius: 10px;
+  border-width: 1px;
+  border-style: solid;
+  background-color: lightblue;
+  max-width: 390px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  padding: 0px;
+}
+
 
 </style>

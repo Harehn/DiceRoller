@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+  <h1>{{ msg }}</h1>
 
   <div>
   <label for='dice_input'>Dice: </label>

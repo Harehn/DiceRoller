@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     async writeText() {
-      var dice_val = document.getElementById("dice_input").value;
+      var dice_val = document.getElementById("dice_input").value; // The Dice String Literal
       dice_val = dice_val.replaceAll(" ", "")
       var found = dice_val.match(/^[0-9d+-]*/)
       found = found[0]

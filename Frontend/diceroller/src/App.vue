@@ -24,7 +24,7 @@ export default {
     HelloWorld, About, Preset
   },data (){
    return {
-    page : 1,
+    page : 2,
    }
   },
   methods: {

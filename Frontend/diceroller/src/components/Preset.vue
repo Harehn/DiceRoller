@@ -1,17 +1,33 @@
 <template>
     <h1>Preset</h1>
-    <table>
+    <table id="preset_table">
+      <tr>
+        <th>Preset Name(Monster)</th>
+        <th>Dice to roll</th>
+        <th></th>
+      </tr>
       <tr v-for="preset in dice_presets">
-        <th>{{ preset["PresetName"] }}</th>
-        <th>
-          <p v-for="roll in preset['Rolls']">{{ roll[0]}} {{ roll[1] }}</p>
-        </th>
-        <th>
+        <td>{{ preset["PresetName"] }}</td>
+        <td>
+          <p v-for="roll in preset['Rolls']">{{ roll[0]}}: {{ roll[1] }}</p>
+        </td>
+        <td>
           <input type='button' value='Roll' @click='roll_preset(preset)'>
-        </th>
-        <th>
-
-        </th>
+        </td>
+      </tr>
+      <tr>
+        <td><input type='text' id='preset_name' name='preset_name' @keyup.enter="makePreset"></td>
+        <td>
+          <div v-for="i in 2" class="dice_roll_div">
+            <label>Roll Name:</label>
+            <input type='text' class='dice_roll_name' name='dice_roll_name'  @keyup.enter="makePreset">
+            <label>Dice to roll:</label>
+            <input type='text' class='dice_roll_dice' name='dice_roll_dice'  @keyup.enter="makePreset">
+          </div>
+        </td>
+        <td>
+          <input type='button' value='Roll' @click='makePreset'>
+        </td>
       </tr>
     </table>
 
@@ -36,7 +52,8 @@
     data (){
      return {
       dice_presets:[],
-      results:[]
+      results:[],
+      in_dev: false
      }
     },
     methods: {
@@ -53,7 +70,7 @@
           var api_path = 'https://diceroller-uwe7.onrender.com/roll?roll='
           if (this.in_dev){api_path =  'http://localhost:5000/roll?roll='}
           api_path = api_path.concat(dice)
-          //console.log(api_path);
+          console.log(api_path);
           var currResult = await fetch(api_path)
           .then(res => res.json())
           .then(response => response['result'])
@@ -65,10 +82,31 @@
       },
       clear(){
       this.results = []
-    }
+    },
+      makePreset(){
+        var new_preset = {};
+        new_preset['PresetName'] = document.getElementById("preset_name").value;
+        
+        var roll_names = (Array.from(document.getElementsByClassName("dice_roll_name")).map((v) => v.value));
+        var roll_dices = (Array.from(document.getElementsByClassName("dice_roll_dice")).map((v) => v.value));
+        var roll_array = [];
+        for (var i = 0; i < roll_names.length; i++){
+          roll_array.push([roll_names[i], roll_dices[i]])
+        }
+        new_preset['Rolls'] = roll_array;
+        console.log(new_preset);
+        this.dice_presets.unshift(new_preset);
+      }
     },
     mounted() {
       this.dice_presets.unshift({'PresetName': "Normal", "Rolls": [['Attack','1d20+8'], ['Damage','3d6']]})
+      //https://stackoverflow.com/a/58475472/28974846
+      if (process.env.NODE_ENV == 'development'){
+        this.in_dev = true;
+        console.log("App was opened in DEVELOPMENT");
+      }else{
+        console.log("App was opened in PRODUCTION");
+      }
       console.log("Preset was mounted.")
     }
   }
@@ -116,6 +154,51 @@
   margin-bottom: 8px;
   padding: 0px;
 }
+
+/*https://www.w3schools.com/css/css_table.asp */
+#preset_table {
+  /* font-family: Arial, Helvetica, sans-serif; */
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 700px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  padding: 0px;
+}
+
+#preset_table td, #preset_table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#preset_table tr:nth-child(even){background-color: #f2f2f2;}
+
+#preset_table tr:hover {background-color: #ddd;}
+
+#preset_table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #3a3a9a;
+  color: white;
+}
+
+.dice_roll_name, .dice_roll_dice {
+ width: 90px;
+}
+
+label {
+  margin-left: 5px;
+  margin-right: 3px;
+}
+
+#dice_roll_div {
+  display: block;
+}
+
+/* style="display: block;margin-top: 5px;" */
 
 </style>
   

@@ -5,6 +5,7 @@
         <th>Preset Name(Monster)</th>
         <th>Dice to roll</th>
         <th></th>
+        <th></th>
       </tr>
       <tr v-for="preset in dice_presets">
         <td>{{ preset["PresetName"] }}</td>
@@ -13,6 +14,9 @@
         </td>
         <td>
           <input type='button' value='Roll' @click='roll_preset(preset)'>
+        </td>
+        <td>
+          <input type='button' value='delete' @click='preset_remove(preset)'>
         </td>
       </tr>
       <tr>
@@ -28,7 +32,10 @@
           <span class="add" @click="dice=Math.max(dice-1, 1)">-</span>
         </td>
         <td>
-          <input type='button' value='Roll' @click='makePreset'>
+          <input type='button' value='Add Preset' @click='makePreset'>
+        </td>
+        <td>
+          <input type='button' value='Clear Text' @click=''>
         </td>
       </tr>
     </table>
@@ -99,10 +106,16 @@
         new_preset['Rolls'] = roll_array;
         console.log(new_preset);
         this.dice_presets.unshift(new_preset);
+        //Putting this here instead of in 'watch' because it was not updating as it should
+        localStorage.dice_presets = JSON.stringify(this.dice_presets); 
+      },
+      preset_remove(preset){
+        this.dice_presets = this.dice_presets.filter(item => item !== preset);
+        localStorage.dice_presets = JSON.stringify(this.dice_presets);
       }
     },
     mounted() {
-      this.dice_presets.unshift({'PresetName': "Normal", "Rolls": [['Attack','1d20+8'], ['Damage','3d6']]})
+      //this.dice_presets.unshift({'PresetName': "Normal", "Rolls": [['Attack','1d20+8'], ['Damage','3d6']]})
       //https://stackoverflow.com/a/58475472/28974846
       if (process.env.NODE_ENV == 'development'){
         this.in_dev = true;
@@ -111,6 +124,14 @@
         console.log("App was opened in PRODUCTION");
       }
       console.log("Preset was mounted.")
+      if (localStorage.dice_presets){
+        try{
+          this.dice_presets = JSON.parse(localStorage.dice_presets);
+        }catch{
+          localStorage.clear();
+        }
+        
+      }
     }
   }
 </script>
@@ -163,7 +184,7 @@
   /* font-family: Arial, Helvetica, sans-serif; */
   border-collapse: collapse;
   width: 100%;
-  max-width: 700px;
+  max-width: 800px;
   margin-right: auto;
   margin-left: auto;
   margin-top: 4px;

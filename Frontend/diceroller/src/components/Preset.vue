@@ -18,12 +18,14 @@
       <tr>
         <td><input type='text' id='preset_name' name='preset_name' @keyup.enter="makePreset"></td>
         <td>
-          <div v-for="i in 2" class="dice_roll_div">
+          <div v-for="i in dice" class="dice_roll_div">
             <label>Roll Name:</label>
             <input type='text' class='dice_roll_name' name='dice_roll_name'  @keyup.enter="makePreset">
             <label>Dice to roll:</label>
             <input type='text' class='dice_roll_dice' name='dice_roll_dice'  @keyup.enter="makePreset">
           </div>
+          <span class="add" @click="dice=Math.max(dice+1, 1)">+</span>
+          <span class="add" @click="dice=Math.max(dice-1, 1)">-</span>
         </td>
         <td>
           <input type='button' value='Roll' @click='makePreset'>
@@ -53,7 +55,8 @@
      return {
       dice_presets:[],
       results:[],
-      in_dev: false
+      in_dev: false,
+      dice: 2,
      }
     },
     methods: {
@@ -198,7 +201,22 @@ label {
   display: block;
 }
 
-/* style="display: block;margin-top: 5px;" */
+.add {
+    display: inline-block;
+    text-align: center;
+    background-color: grey;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+    line-height: 26px;
+    cursor: default;
+    font-weight: bold;
+    color:#fff;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
 
 </style>
   

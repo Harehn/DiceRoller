@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, send_file
 from flask_cors import CORS
 from random import random, randint
 import helper
@@ -39,6 +39,20 @@ def wake():
 def in_dev():
     import os
     return "App in development mode" if app.debug else "App in Production mode"
+
+@app.route("/doc")
+def doc():
+    filename = "test.txt"
+    import os
+    path = os.getcwd() + filename
+    if app.debug:
+        path = os.getcwd() + filename
+    try:
+        with open(path, 'w') as in_file:
+            in_file.write("Just having a great time.")
+        return send_file(path)
+    except Exception as e:
+        return str(e)
 
 if __name__ == "__main__":
     # app.run(debug=True) # DEVELOPMENT MODE

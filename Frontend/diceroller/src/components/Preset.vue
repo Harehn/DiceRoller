@@ -35,7 +35,7 @@
           <input type='button' value='Add Preset' @click='makePreset'>
         </td>
         <td>
-          <input type='button' value='Clear Text' @click=''>
+          <input type='button' value='Clear Text' @click='clearText'>
         </td>
       </tr>
     </table>
@@ -108,10 +108,16 @@
         this.dice_presets.unshift(new_preset);
         //Putting this here instead of in 'watch' because it was not updating as it should
         localStorage.dice_presets = JSON.stringify(this.dice_presets); 
+        this.clearText();
       },
       preset_remove(preset){
         this.dice_presets = this.dice_presets.filter(item => item !== preset);
         localStorage.dice_presets = JSON.stringify(this.dice_presets);
+      },
+      clearText(){
+        Array.from(document.getElementsByClassName("dice_roll_name")).forEach((v) => v.value="");
+        Array.from(document.getElementsByClassName("dice_roll_dice")).forEach((v) => v.value="");
+        document.getElementById("preset_name").value = "";
       }
     },
     mounted() {

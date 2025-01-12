@@ -20,7 +20,7 @@
 
     <h2>Issues</h2>
     <p>The presets are stored locally and sometimes that may have an issue and be cleared automatically.</p>
-    <input type='button' style="float: left;" value='Clear LocalStorage Manually' @click=localStorage.clear();>
+    <input type='button' style="float: left;" value='Clear LocalStorage Manually' @click=clear>
     <br>
     <p>The Backend may take a little while to wake up and all the pending rolls might appear all at once.</p>
     <p>Not all incorrect strings are caught at the input sanitation or the checks at the Backend.</p>
@@ -39,6 +39,9 @@
     name: 'HelpTab',
     data (){
      return {
+        clear(){
+            localStorage.clear();
+        }
 
      }
     },

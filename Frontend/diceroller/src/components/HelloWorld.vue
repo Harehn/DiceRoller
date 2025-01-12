@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-  <p v-if="!backend_awake">Waking up backend</p>
+  <p v-if="!backend_awake">Waking up backend... Some functionalities may not work right away... Please wait...</p>
   <h1>{{ msg }}</h1>
 
   <div>

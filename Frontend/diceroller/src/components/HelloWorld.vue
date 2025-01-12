@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+  <p v-if="!backend_awake">Waking up backend</p>
   <h1>{{ msg }}</h1>
 
   <div>
@@ -38,7 +39,8 @@ export default {
    return {
     members: [],
     results: [],
-    in_dev:false
+    in_dev:false,
+    backend_awake:false
    }
   },
   methods: {
@@ -73,6 +75,14 @@ export default {
     if (process.env.NODE_ENV == 'development'){
        this.in_dev = true;
        console.log("App was opened in DEVELOPMENT");
+       var api_path = 'http://localhost:5000/roll?roll=';
+       console.log("Calling Backend...")
+        fetch(api_path)
+        .then(res => res.json())
+        .then(data => data['message'])
+        .then(data => console.log(data))
+        .then(data => this.backend_awake=true)
+        .catch(err => console.log(err));
     }else{
        console.log("App was opened in PRODUCTION");
        var api_path = 'https://diceroller-uwe7.onrender.com/wake';
@@ -81,6 +91,7 @@ export default {
         .then(res => res.json())
         .then(data => data['message'])
         .then(data => console.log(data))
+        .then(data => this.backend_awake=true)
         .catch(err => console.log(err));
     }
     //console.log(process.env.NODE_ENV == 'development'); // OUTPUT: development

@@ -1,12 +1,15 @@
 <template>
     <h1>Preset</h1>
     <table id="preset_table">
+    <thead>
       <tr>
         <th>Preset Name(Monster)</th>
         <th>Dice to roll</th>
         <th></th>
         <th></th>
       </tr>
+    </thead>
+    <tbody>
       <tr v-for="preset in dice_presets">
         <td>{{ preset["PresetName"] }}</td>
         <td>
@@ -38,10 +41,12 @@
           <input type='button' value='Clear Text' @click='clearText'>
         </td>
       </tr>
+    </tbody>
     </table>
 
     <div>
       <input type='button' value='Clear History' @click='clear'>
+      <!-- <input style="margin-left: 5px;" type='button' value='Download History' @click='downloadHistory'> -->
   </div>
 
     <div id="roll" v-if='results.length != 0'>
@@ -118,6 +123,14 @@
         Array.from(document.getElementsByClassName("dice_roll_name")).forEach((v) => v.value="");
         Array.from(document.getElementsByClassName("dice_roll_dice")).forEach((v) => v.value="");
         document.getElementById("preset_name").value = "";
+      },
+      async downloadHistory(){
+        console.log("Button was pressed.")
+        var api_path = 'http://localhost:5000/doc'
+        var currResult = await fetch(api_path)
+          .then(res => res.blob())
+          .then(response => console.log(response))
+          .catch(err => console.log(err));
       }
     },
     mounted() {

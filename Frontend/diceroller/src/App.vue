@@ -9,10 +9,12 @@
   </ul>
   </div>
   
-  <HelloWorld v-if="page==1" msg="Welcome to DiceRoller"/>
-  <Preset v-if="page==2"/>
-  <About v-if="page==3"/>
-  <HelpTab v-if="page==4"/>
+  <div class="content">
+    <HelloWorld class="main" v-if="page==1" msg="Welcome to DiceRoller"/>
+    <Preset v-if="page==2"/>
+    <About v-if="page==3"/>
+    <HelpTab v-if="page==4"/>
+  </div>
 </template>
 
 <script>
@@ -81,5 +83,25 @@ li a {
 li a:hover {
   background-color: #111;
 } 
+
+/* HelloWorld, About, Preset, HelpTab {
+  background-color: aqua;
+  background-image: url('assets/dice_wallpaper.jpg');
+  background-size: cover;
+} */
+
+/* .content {
+  background-image: url('assets/dice_wallpaper.jpg');
+  background-size: cover;
+  background-repeat: repeat;
+  background-blend-mode: lighten;
+  background-color: rgba(255,255,255,0.7);
+  min-height: 600px;
+}
+
+.main {
+  backdrop-filter: blur(7px)
+} 
+*/
 
 </style>

@@ -29,6 +29,7 @@
     <h2>Further Development</h2>
     <p>I intend to add a possible download for the history and import/export of presets.</p>
     <p>However, this can be considered a version 1.0 and further development will have to wait.</p>
+    <p>Website background image seems to interfere with reading the html elements. I will find a way to properly blend the image.</p>
 
     
 </template>

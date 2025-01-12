@@ -39,14 +39,13 @@
     name: 'HelpTab',
     data (){
      return {
-        clear(){
-            localStorage.clear();
-        }
 
      }
     },
     methods: {
-
+        clear(){
+            localStorage.clear();
+        }
     },
     mounted() {
       console.log("About was mounted.")

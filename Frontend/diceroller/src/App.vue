@@ -15,6 +15,7 @@
     <About v-if="page==3"/>
     <HelpTab v-if="page==4"/>
   </div>
+
 </template>
 
 <script>
@@ -51,20 +52,16 @@ export default {
   margin-top: 0px;
 }
 
-
-
 ul {
   list-style-type: none;
   margin-left: auto;
   margin-right: auto;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
-  
+  background-color: #333;  
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 0;
-
 }
 
 li {
@@ -83,12 +80,6 @@ li a {
 li a:hover {
   background-color: #111;
 } 
-
-/* HelloWorld, About, Preset, HelpTab {
-  background-color: aqua;
-  background-image: url('assets/dice_wallpaper.jpg');
-  background-size: cover;
-} */
 
 /* .content {
   background-image: url('assets/dice_wallpaper.jpg');

@@ -1,5 +1,6 @@
 <template>
     <h1>About</h1>
+
     <h2>Summary</h2>
     <p>This app was made because I needed a quick easy way to store and roll homebrew rolls for DND.
         This provides a quick easy way to roll my monster attacks.
@@ -11,8 +12,6 @@
     3 d 6 + 2, 3d6 + 2 and 3d6+2 will all send the same request. 
     </p>
 
-    <h2>Resources</h2>
-
     <h2>Technical</h2>
     <p><b>Github</b> The code of this website (Frontend and Backend) is hosted on github <a href="https://github.com/Harehn/DiceRoller" target="_blank">here</a></p>
     <p><b>Hosting</b>The backend of the code is hosted on Render <a href="https://diceroller-uwe7.onrender.com" target="_blank">here</a>
@@ -20,8 +19,6 @@
     </p>
     <p><b>Technologies</b>The backend app was made using Flask and the frontend uses Vue js</p>
 
-
-    
 </template>
   
 <script>
@@ -33,11 +30,10 @@
      }
     },
     methods: {
-      sample() {
-      },
+
     },
     mounted() {
-      console.log("About was mounted.")
+
     }
   }
 </script>
@@ -56,7 +52,6 @@ p {
     margin-left: 20px;
     margin-right: 20px;
 }
-
 
 </style>
   

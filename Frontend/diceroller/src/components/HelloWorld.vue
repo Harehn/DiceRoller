@@ -1,24 +1,27 @@
 <template>
   <div class="hello">
-  <p v-if="!backend_awake">Waking up backend... Some functionalities may not work right away... Please wait...</p>
-  <h1>{{ msg }}</h1>
+    <p v-if="!backend_awake">Waking up backend... Some functionalities may not work right away... Please wait...</p>
+    <h1>{{ msg }}</h1>  <!--Welcome Message-->
 
-  <div>
-  <label for='dice_input'>Dice: </label>
-  <input type='text' id='dice_input' name='dice_input'  @keyup.enter="writeText">
-  <p id=space>X</p>
-  <input type='button' value='Roll' @click='writeText'>
-  <p id=space>X</p>
-  <help help_msg="Input must be in format XdX+X. eg 3d10+3, 1d100, 2d6-1."/>
-  </div>
+    <!--Element for Dice roll input-->
+    <div>
+      <label for='dice_input'>Dice: </label>
+      <input type='text' id='dice_input' name='dice_input'  @keyup.enter="writeText">
+      <p id=space>X</p>
+      <input type='button' value='Roll' @click='writeText'>
+      <p id=space>X</p>
+      <help help_msg="Input must be in format XdX+X. eg 3d10+3, 1d100, 2d6-1."/>
+    </div>
 
-  <div>
-    <input type='button' value='Clear History' @click='clear'>
-  </div>
+    <!--Clear history button-->
+    <div>
+      <input type='button' value='Clear History' @click='clear'>
+    </div>
 
-  <div id="roll" v-if='results.length != 0'>
-  <p class="iroll" v-for="result in results"><b>{{result[0]}}:</b> {{result[1]}}</p>
-  </div>
+    <!--History-->
+    <div id="roll" v-if='results.length != 0'>
+      <p class="iroll" v-for="result in results"><b>{{result[0]}}:</b> {{result[1]}}</p>
+    </div>
 
   </div>
 </template>
@@ -45,7 +48,7 @@ export default {
   },
   methods: {
     async writeText() {
-      var dice_val = document.getElementById("dice_input").value; // The Dice String Literal
+      var dice_val = document.getElementById("dice_input").value;
       dice_val = dice_val.replaceAll(" ", "")
       var found = dice_val.match(/^[0-9d+-]*/)
       found = found[0]
@@ -148,6 +151,5 @@ a {
   margin-bottom: 4px;
   padding: 0px;
 }
-
 
 </style>

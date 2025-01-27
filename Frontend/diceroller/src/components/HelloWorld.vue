@@ -6,7 +6,7 @@
     <!--Element for Dice roll input-->
     <div>
       <label for='dice_input'>Dice: </label>
-      <input type='text' id='dice_input' name='dice_input'  @keyup.enter="writeText">
+      <input type='text' id='dice_input' name='dice_input' placeholder="eg. 8d6"  @keyup.enter="writeText">
       <p id=space>X</p>
       <input type='button' value='Roll' @click='writeText'>
       <p id=space>X</p>

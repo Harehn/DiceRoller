@@ -2,6 +2,7 @@
     <h1>Preset</h1>
     <table id="preset_table">
     <thead>
+      <!-- Header -->
       <tr>
         <th>Preset Name(Monster)</th>
         <th>Dice to roll</th>
@@ -10,6 +11,7 @@
       </tr>
     </thead>
     <tbody>
+      <!-- All stored presets -->
       <tr v-for="preset in dice_presets">
         <td>{{ preset["PresetName"] }}</td>
         <td>
@@ -22,14 +24,15 @@
           <input type='button' value='delete' @click='preset_remove(preset)'>
         </td>
       </tr>
+      <!-- Input form -->
       <tr>
-        <td><input type='text' id='preset_name' name='preset_name' @keyup.enter="makePreset"></td>
+        <td><input type='text' id='preset_name' name='preset_name' placeholder="Eg. Guard" @keyup.enter="makePreset"></td>
         <td>
           <div v-for="i in dice" class="dice_roll_div">
             <label>Roll Name:</label>
-            <input type='text' class='dice_roll_name' name='dice_roll_name'  @keyup.enter="makePreset">
+            <input type='text' class='dice_roll_name' name='dice_roll_name' placeholder="Eg. Attack"  @keyup.enter="makePreset">
             <label>Dice to roll:</label>
-            <input type='text' class='dice_roll_dice' name='dice_roll_dice'  @keyup.enter="makePreset">
+            <input type='text' class='dice_roll_dice' name='dice_roll_dice' placeholder="1d20 + 3"  @keyup.enter="makePreset">
           </div>
           <span class="add" @click="dice=Math.max(dice+1, 1)">+</span>
           <span class="add" @click="dice=Math.max(dice-1, 1)">-</span>

@@ -1,7 +1,13 @@
 <template>
   <div class="hello">
-    <p v-if="!backend_awake">Waking up backend... Some functionalities may not work right away... Please wait...</p>
-    <h1>{{ msg }}</h1>  <!--Welcome Message-->
+    <!-- Waiting for backend message and loader -->
+    <div v-if="!backend_awake">
+      <p style="display: inline-block;padding-right:5px;">Waking up backend... Some functionalities may not work right away... Please wait...</p> 
+      <div class="loader"></div>
+    </div>
+
+    <!--Welcome Message-->
+    <h1>{{ msg }}</h1>  
 
     <!--Element for Dice roll input-->
     <div>
@@ -150,6 +156,23 @@ a {
   margin-top: 4px;
   margin-bottom: 4px;
   padding: 0px;
+}
+
+.loader {
+  --s: 10px;
+  
+  --_d: calc(0.353*var(--s));
+  width: calc(var(--s) + var(--_d));
+  aspect-ratio: 1;
+  clip-path: polygon(var(--_d) 0,100% 0,100% calc(100% - var(--_d)),calc(100% - var(--_d)) 100%,0 100%,0 var(--_d));
+  background:
+    conic-gradient(from -90deg at var(--s) var(--_d),
+     #fff 135deg,#666 0 270deg,#aaa 0);
+  animation: l1 1s infinite cubic-bezier(0.5,300,0.5,-300);
+  display: inline-block;
+}
+@keyframes l1{
+  50%,100% {transform:translateY(0.1px)}
 }
 
 </style>

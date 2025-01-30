@@ -15,7 +15,18 @@
 
     <h2>Use</h2>
     <p>The home tab allows for single rolls to be made. Beware that the history clears as you change tabs and is not cached.</p>
+    <!-- ERRROOOOOOOORRRRR TO fix image -->
+     <div style="text-align: left;">
+    <img :src="require(`@/assets/Home1.png`)" alt="Example 1 of home page use">
+    <img :src="require(`@/assets/Home2.png`)" alt="Example 2 of home page use">
+    </div>
+
     <p>The preset tab allows you to store presets ie sets of dices to roll.</p>
+
+    <div style="text-align: left;">
+    <img :src="require(`@/assets/Preset1.png`)" alt="Example 1 of preset use entering data">
+    <img :src="require(`@/assets/Preset2.png`)" alt="Example 2 of preset use, with rolls">
+    </div>
 
 
     <h2>Issues</h2>
@@ -68,6 +79,10 @@ p {
     margin-right: 20px;
 }
 
+img {
+    border: black solid 1px;
+    margin-left: 3px;
+}
 
 </style>
   

@@ -2,10 +2,10 @@
   <!-- https://www.w3schools.com/css/css_navbar_horizontal.asp -->
   <div class="nav">
   <ul>
-    <li><a @click="changePage(1)">Home</a></li>
-    <li><a @click="changePage(2)">Presets</a></li>
-    <li><a @click="changePage(3)">About</a></li>
-    <li style="float:right"><a @click="changePage(4)">Help</a></li>
+    <li><a class="tab active" @click="changePage(1)">Home</a></li>
+    <li><a class="tab" @click="changePage(2)">Presets</a></li>
+    <li><a class="tab" @click="changePage(3)">About</a></li>
+    <li style="float:right"><a class="tab" @click="changePage(4)">Help</a></li>
   </ul>
   </div>
   
@@ -35,7 +35,14 @@ export default {
   },
   methods: {
     changePage(page_num){
-      this.page = page_num
+      this.page = page_num;
+      var btns = document.getElementsByClassName("tab");
+      for (var i = 0; i < btns.length; i++){
+        if (btns[i].classList.contains("active")){
+          btns[i].className = btns[i].className.replace(" active","")
+        }
+      }
+      btns[page_num - 1].className += " active"
       console.log(this.page)
     }
   }
@@ -58,7 +65,7 @@ ul {
   margin-right: auto;
   padding: 0;
   overflow: hidden;
-  background-color: #333;  
+  background-color: #555;  
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 0;
@@ -77,8 +84,9 @@ li a {
 }
 
 /* Change the link color to #111 (black) on hover */
-li a:hover {
+.active ,li a:hover {
   background-color: #111;
+  cursor: pointer;
 } 
 
 /* .content {

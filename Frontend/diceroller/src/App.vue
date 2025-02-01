@@ -24,6 +24,16 @@ import About from './components/About.vue'
 import Preset from './components/Preset.vue'
 import HelpTab from './components/HelpTab.vue';
 
+// const pgnum = 1;
+// if (localStorage.page_num){
+//   try{
+//     pgnum = JSON.parse(localStorage.page_num);
+//   }catch{
+//     //localStorage.clear();
+//     pgnum = 1;
+//   }
+// }
+
 export default {
   name: 'App',
   components: {
@@ -36,6 +46,11 @@ export default {
   methods: {
     changePage(page_num){
       this.page = page_num;
+      this.changeActive(page_num);
+      console.log("page" + this.page)
+      localStorage.page_num = JSON.stringify(this.page);
+    },
+    changeActive(page_num){
       var btns = document.getElementsByClassName("tab");
       for (var i = 0; i < btns.length; i++){
         if (btns[i].classList.contains("active")){
@@ -43,8 +58,21 @@ export default {
         }
       }
       btns[page_num - 1].className += " active"
-      console.log(this.page)
     }
+  },
+  created(){
+    const pgnum = 1;
+    if (localStorage.page_num){
+      try{
+        this.page = JSON.parse(localStorage.page_num);
+      }catch{
+        //localStorage.clear();
+        this.page = 1;
+      }
+    }
+  },
+  mounted(){
+    this.changeActive(this.page)
   }
 }
 </script>

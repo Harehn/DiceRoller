@@ -115,7 +115,8 @@
         console.log(new_preset);
         this.dice_presets.unshift(new_preset);
         //Putting this here instead of in 'watch' because it was not updating as it should
-        localStorage.dice_presets = JSON.stringify(this.dice_presets); 
+        localStorage.dice_presets = JSON.stringify(this.dice_presets);
+        this.dice = 2; 
         this.clearText();
       },
       preset_remove(preset){

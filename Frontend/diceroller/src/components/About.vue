@@ -11,6 +11,7 @@
     Eg 3d6+2 or 3d10. White space is removed before sending to the backend.
     3 d 6 + 2, 3d6 + 2 and 3d6+2 will all send the same request. 
     </p>
+    <p>Find more details on the <i>help</i> tab.</p>
 
     <h2>Technical</h2>
     <p><b>Github</b> The code of this website (Frontend and Backend) is hosted on github <a href="https://github.com/Harehn/DiceRoller" target="_blank">here</a></p>

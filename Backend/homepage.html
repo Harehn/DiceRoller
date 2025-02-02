@@ -3,16 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <title>Homepage</title>
+    <style>
+        body{
+          font-family: Avenir, Helvetica, Arial, sans-serif;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          text-align: center;
+          color: #2c3e50;
+          margin-top: 0px;
+        }
+        /*https://www.w3schools.com/css/css_table.asp */
+#link_table {
+  /* font-family: Arial, Helvetica, sans-serif; */
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 800px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  padding: 0px;
+}
+
+#link_table td, #preset_table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#link_table tr:nth-child(even){background-color: #f2f2f2;}
+
+#link_table tr:hover {background-color: #ddd;}
+
+#link_table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: centre;
+  background-color: #3a3a9a;
+  color: white;
+}
+    </style>
 </head>
 <body>
 <h1>This is the homepage.</h1>
 <p>Here are the available pages/api.</p>
-<ul>
-    <li>Root</li>
-    <li><p>Roll</p><p>/roll?roll=3d6-2</p></li>
-    <li><p>Wake</p><p>A boilerplate api to wake up the backend</p><p>/wake</p></li>
-    <li><p>Dev</p><p>Returns whether the app is in development or production</p><p>/dev</p></li>
-    <li><p>Doc</p><p>Returns a sample document. (Still in development)</p><p>/doc</p></li>
-</ul>
+<table id="link_table">
+    <thead>
+      <!-- Header -->
+      <tr>
+        <th>Function</th>  <th>Link</th>  <th>Description</th>  <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Root</td>
+        <td>/</td>
+        <td>The index file that gives the list of urls</td>
+        <td><a href="/">Click me!</a></td>
+    </tr>
+    <tr>
+        <td>Roll</td>
+        <td>/roll?roll=3d6-2</td>
+        <td>Returns the value of the rolled dice</td>
+        <td><a href="/roll?roll=3d6-2">Click me!</a></td>
+    </tr>
+    <tr>
+        <td>Wake</td>
+        <td>/wake</td>
+        <td>Simple function that is an endpoint to wake up the backend<br/>
+            Returns a json file with the message "The backend is awake now"</td>
+        <td><a href="/wake">Click me!</a></td>
+    </tr>
+     <tr>
+        <td>Dev</td>
+         <td>/dev</td>
+         <td>Returns whether the app is in development or production</td>
+         <td><a href="/dev">Click me!</a></td>
+    </tr>
+     <tr>
+        <td>Doc</td>
+         <td>/doc</td>
+         <td>Returns a sample document. (Still in development)</td>
+         <td><a href="/doc">Click me!</a></td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

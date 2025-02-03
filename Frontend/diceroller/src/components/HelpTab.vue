@@ -15,8 +15,7 @@
 
     <h2>Use</h2>
     <p>The home tab allows for single rolls to be made. Beware that the history clears as you change tabs and is not cached.</p>
-    <!-- ERRROOOOOOOORRRRR TO fix image -->
-     <div style="text-align: left;">
+    <div style="text-align: left;">
     <img class="home" :src="require(`@/assets/Home1.png`)" alt="Example 1 of home page use">
     <img class="home" :src="require(`@/assets/Home2.png`)" alt="Example 2 of home page use">
     </div>
@@ -49,18 +48,10 @@
 <script>
   export default {
     name: 'HelpTab',
-    data (){
-     return {
-
-     }
-    },
     methods: {
         clear(){
             localStorage.clear();
         }
-    },
-    mounted() {
-      console.log("About was mounted.")
     }
   }
 </script>

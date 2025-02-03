@@ -35,7 +35,8 @@
     <br>
     <p>The Backend may take a little while to wake up and all the pending rolls might appear all at once.</p>
     <p>Not all incorrect strings are caught at the input sanitation or the checks at the Backend.</p>
-    <p>If issues persist, contact hkaundun@gmail.com. </p>
+    <p>If issues persist, contact <a href="mailto:hkaundun@gmail.com">hkaundun@gmail.com</a>
+        or create an issue on <a href="https://github.com/Harehn/DiceRoller/issues" target="_blank">GitHub</a> </p>
 
     <h2>Further Development</h2>
     <p>I intend to add a possible download for the history and import/export of presets.</p>

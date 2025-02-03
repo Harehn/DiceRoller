@@ -39,7 +39,7 @@
 /* The actual popup (appears on top) */
 .popup .popuptext {
   visibility: hidden;
-  width: 160px;
+  width: 320px;
   background-color: #555;
   color: #fff;
   text-align: center;
@@ -49,7 +49,7 @@
   z-index: 1;
   bottom: 125%;
   left: 50%;
-  margin-left: -80px;
+  margin-left: -160px;
 }
 
 /* Popup arrow */
@@ -97,7 +97,7 @@
     height: 24px;
     font-size: 14px;
     line-height: 26px;
-    cursor: default;
+    cursor: pointer;
 }
 
 </style>

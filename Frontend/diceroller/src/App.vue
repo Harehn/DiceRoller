@@ -87,7 +87,31 @@ export default {
   margin-top: 0px;
 }
 
+html,
+body {
+  background:#f4f4f4;
+  height: 100vh;
+  width: 100vw;
+
+  
+    /* width: 100%;
+    height: 100%; */
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+
+  margin: 0;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.nav{
+  margin-top: 0;
+  padding-top:0;
+}
+
 ul {
+  margin-top: 0;
   list-style-type: none;
   margin-left: auto;
   margin-right: auto;
@@ -109,6 +133,7 @@ li a {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  transition:0.1s;
 }
 
 /* Change the link color to #111 (black) on hover */

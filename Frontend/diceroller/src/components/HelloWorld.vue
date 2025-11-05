@@ -16,13 +16,18 @@
       <p id=space>X</p>
       <input type='button' value='Roll' @click='writeText'>
       <p id=space>X</p>
-      <help help_msg="Input must be in format XdX+X. eg 3d10+3, 1d100, 2d6-1."/>
+      <help help_msg="8d6 indicates 8 6-sided dice are rolled and the total of the rolls are displayed."/>
     </div>
 
     <!--Clear history button-->
     <div>
       <input type='button' value='Clear History' @click='clear'>
     </div>
+
+    <!--Clear history button-->
+    <!-- <div>
+      <input type='button' value='Download History' @click='dwld'>
+    </div> -->
 
     <!--History-->
     <div id="roll" v-if='results.length != 0'>
@@ -77,6 +82,12 @@ export default {
     },
     clear(){
       this.results = []
+    },
+    async dwld(){
+      const url = "http://localhost:5000/doc";
+      await fetch(url)
+      .then((res)=>res.blob())
+      
     }
   },
   mounted() {

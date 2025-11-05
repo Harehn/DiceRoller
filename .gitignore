@@ -1,3 +1,4 @@
 .idea/
 .venv/
 Backend/__pycache__/
+*txt

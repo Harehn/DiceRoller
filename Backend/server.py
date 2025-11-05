@@ -55,5 +55,5 @@ def doc():
         return str(e)
 
 if __name__ == "__main__":
-    # app.run(debug=True) # DEVELOPMENT MODE
-    app.run(host='0.0.0.0', port=3000) # PRODUCTION MODE
+    app.run(debug=True) # DEVELOPMENT MODE
+    # app.run(host='0.0.0.0', port=3000) # PRODUCTION MODE

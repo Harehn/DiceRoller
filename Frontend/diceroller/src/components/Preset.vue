@@ -205,7 +205,7 @@
 }
 
 .tb{
-  overflow: scroll;
+  overflow: auto;
 }
 
 /*https://www.w3schools.com/css/css_table.asp */

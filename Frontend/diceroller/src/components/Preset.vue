@@ -1,5 +1,6 @@
 <template>
     <h1>Preset</h1>
+    <div class="tb">
     <table id="preset_table">
     <thead>
       <!-- Header -->
@@ -46,6 +47,7 @@
       </tr>
     </tbody>
     </table>
+    </div>
 
     <div>
       <input type='button' value='Clear History' @click='clear'>
@@ -200,6 +202,10 @@
   margin-top: 16px;
   margin-bottom: 8px;
   padding: 0px;
+}
+
+.tb{
+  overflow: scroll;
 }
 
 /*https://www.w3schools.com/css/css_table.asp */

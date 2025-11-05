@@ -16,6 +16,12 @@
     <HelpTab v-if="page==4"/>
   </div>
 
+  <div v-if="page==1" style="height:95%"></div>
+  <div v-if="page==2" style="height:60%"></div>
+  <div v-if="page==3" style="height:10%"></div>
+
+  <Footer/>
+
 </template>
 
 <script>
@@ -23,6 +29,7 @@ import HelloWorld from './components/HelloWorld.vue'
 import About from './components/About.vue'
 import Preset from './components/Preset.vue'
 import HelpTab from './components/HelpTab.vue';
+import Footer from './components/Footer.vue';
 
 // const pgnum = 1;
 // if (localStorage.page_num){
@@ -37,7 +44,7 @@ import HelpTab from './components/HelpTab.vue';
 export default {
   name: 'App',
   components: {
-    HelloWorld, About, Preset, HelpTab
+    HelloWorld, About, Preset, HelpTab, Footer
   },data (){
    return {
     page : 1,
